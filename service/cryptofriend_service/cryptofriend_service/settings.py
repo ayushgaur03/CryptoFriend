@@ -37,7 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Third Party Apps
     'rest_framework',
+    'rest_framework.authtoken',
+
+    # Project's app created
+    'temp_app',
+    'clientapp'
 ]
 
 MIDDLEWARE = [
@@ -75,9 +82,13 @@ WSGI_APPLICATION = 'cryptofriend_service.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'cryptofriend-db',
+        'USER': 'postgres',
+        'PASSWORD': 'cryptovault',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -126,5 +137,20 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Pagination allows you to control how many objects per page are returned.
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10
+    'PAGE_SIZE': 10,
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
 }
+
+# Superuser authentication
+"""
+    username = hitmanAryan
+    email = aryangaur167@gmail.com
+    password = Aryan@167
+    first_name = Aryan
+    last_name = Gaur
+"""
