@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
 
     # Project's app created
-    'temp_app',
     'clientapp'
 ]
 
